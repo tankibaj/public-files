@@ -12,11 +12,10 @@
     }
 
     body {
-      background-image: url("https://raw.githubusercontent.com/tankibaj/public-files/main/terraform-test/background.png");
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
+      color: black;
       font-family: Arial, Helvetica, sans-serif
     }
 
@@ -61,9 +60,9 @@
   <div class="container">
     <div class="content">
       <h1>Hello World!!!</h1>
-      <p><span class="attribute-name">AMI ID:</span><code><?php echo $ami_id; ?></code></p>
-      <p><span class="attribute-name">Instance ID:</span><code><?php echo $instance_id; ?></code></p>
-      <p><span class="attribute-name">Availability Zones:</span><code><?php echo $zone; ?></code></p>
+      <p><span class="attribute-name">AMI ID:</span><?php echo $ami_id; ?></p>
+      <p><span class="attribute-name">Instance ID:</span><?php echo $instance_id; ?></p>
+      <p><span class="attribute-name">Availability Zones:</span><?php echo $zone; ?></p>
     </div>
   </div>
 </body>
