@@ -1,8 +1,20 @@
+<?php
+$url = "http://169.254.169.254/latest/meta-data/instance-id";
+$instance_id = file_get_contents($url);
+
+$url = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
+$zone = file_get_contents($url);
+
+$url = "http://169.254.169.254/latest/meta-data/ami-id";
+$ami_id = file_get_contents($url);
+?>
+
+
 <!DOCTYPE html>
 <html>
 
 <head>
-  <title>Terraform</title>
+  <title><?php echo $instance_id; ?></title>
   <link rel="icon" href="https://www.terraform.io/favicon.ico" type="image/x-icon" />
   <style>
     html,
@@ -45,24 +57,13 @@
     }
   </style>
 </head>
-<?php
-  $url = "http://169.254.169.254/latest/meta-data/instance-id";
-  $instance_id = file_get_contents($url);
-
-  $url = "http://169.254.169.254/latest/meta-data/placement/availability-zone";
-  $zone = file_get_contents($url);
-
-  $url = "http://169.254.169.254/latest/meta-data/ami-id";
-  $ami_id = file_get_contents($url);
-  ?>
-
 <body>
   <div class="container">
     <div class="content">
-      <h1>Hello World!!!</h1>
-      <p><span class="attribute-name">AMI ID:</span><?php echo $ami_id; ?></p>
+      <h1>Hello World!</h1>
       <p><span class="attribute-name">Instance ID:</span><?php echo $instance_id; ?></p>
       <p><span class="attribute-name">Availability Zones:</span><?php echo $zone; ?></p>
+      <p><span class="attribute-name">AMI ID:</span><?php echo $ami_id; ?></p>
     </div>
   </div>
 </body>
