@@ -2,8 +2,9 @@
 
 IP=192.168.0.0/24
 OVPN_PROFILE_PATH=/home/naim/profile.ovpn
-OVPN_AUTH_USERNAME=test
-OVPN_AUTH_PASSWORD=test
+OVPN_AUTH_PATH=/home/naim/.ovpnauth
+# OVPN_AUTH_USERNAME=test
+# OVPN_AUTH_PASSWORD=test
 
 config_firewall() {
   # Forward
@@ -73,11 +74,12 @@ config_firewall() {
 
 config_openvpn() {
   cp $OVPN_PROFILE_PATH /etc/openvpn/default.conf
-  echo "$OVPN_AUTH_USERNAME
-$OVPN_AUTH_PASSWORD" >/etc/openvpn/auth
-  chmod 600 /etc/openvpn/auth
+#   echo "$OVPN_AUTH_USERNAME
+# $OVPN_AUTH_PASSWORD" >/etc/openvpn/auth
+  touch $OVPN_AUTH_PATH
+  chmod 600 $OVPN_AUTH_PATH
   # Append auth file to openvpn profile
-  sed -i 's|auth-user-pass|auth-user-pass /etc/openvpn/auth|g' /etc/openvpn/default.conf
+  sed -i 's|auth-user-pass|auth-user-pass $OVPN_AUTH_PATH|g' /etc/openvpn/default.conf
   # Append log file to openvpn profile
   sed -i -e '$alog /var/log/openvpn.log' /etc/openvpn/default.conf
   # Connect openvpn
