@@ -79,7 +79,7 @@ config_openvpn() {
   touch $OVPN_AUTH_PATH
   chmod 600 $OVPN_AUTH_PATH
   # Append auth file to openvpn profile
-  sed -i 's|auth-user-pass|auth-user-pass $OVPN_AUTH_PATH|g' /etc/openvpn/default.conf
+  sed -i 's|auth-user-pass.*|auth-user-pass '$OVPN_AUTH_PATH'|g' /etc/openvpn/default.conf
   # Append log file to openvpn profile
   sed -i -e '$alog /var/log/openvpn.log' /etc/openvpn/default.conf
   # Connect openvpn
