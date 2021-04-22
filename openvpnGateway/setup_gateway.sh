@@ -83,7 +83,7 @@ config_openvpn() {
   # Append log file to openvpn profile
   sed -i -e '$alog /var/log/openvpn.log' /etc/openvpn/default.conf
   # Connect openvpn
-  openvpn --client --config /etc/openvpn/default.conf --daemon
+  openvpn --config /etc/openvpn/default.conf --daemon
 }
 
 install_openvpn() {
