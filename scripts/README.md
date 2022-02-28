@@ -51,6 +51,6 @@ The docker-demon-helper script will help to do the following:
 #### Example
 
 ```bash
-wget -O- -q https://raw.githubusercontent.com/tankibaj/public-files/main/scripts/docker-demon-helper.sh | bash -s /data/docker
+wget -O- -q https://raw.githubusercontent.com/tankibaj/public-files/main/scripts/docker-demon-helper.sh | sudo bash -s /data/docker
 ```
 
